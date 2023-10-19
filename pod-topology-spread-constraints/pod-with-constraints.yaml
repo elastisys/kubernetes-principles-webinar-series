@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-constraints
+  name: test-constraints
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: test-constraints
+  template:
+    metadata:
+      labels:
+        app: test-constraints
+    spec:
+      topologySpreadConstraints:
+      - topologyKey: kubernetes.io/hostname # På nivån av worker nodes...
+        maxSkew: 1                          # ...tillåt maximal skevhet 1...
+        whenUnsatisfiable: DoNotSchedule    # ...och förbjud schemaläggning som skulle bryta mot regeln.
+        labelSelector:                      # Vanlig label selector som pekar ut Pods ur just denna
+          matchLabels:                      # Deployment, alltså, med "app" satt till "test-constraints",
+            app: test-constraints           # vilket ju sätts på rader ovan.
+      imagePullSecrets:
+      - name: pull-secret-principles
+      containers:
+      - image: harbor.long-running.dev-ck8s.com/nginx-unprivileged/nginx-unprivileged:mainline-perl
+        name: nginx
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128M
+          limits:
+            cpu: 100m
+            memory: 128M
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          seccompProfile: 
+            type: "RuntimeDefault"
+          capabilities:
+            drop:
+              - "ALL"
