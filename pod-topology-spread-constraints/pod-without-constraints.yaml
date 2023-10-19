@@ -16,6 +16,7 @@ spec:
     spec:
       imagePullSecrets:
       - name: pull-secret-principles
+      automountServiceAccountToken: false
       containers:
       - image: harbor.long-running.dev-ck8s.com/nginx-unprivileged/nginx-unprivileged:mainline-perl
         name: nginx
