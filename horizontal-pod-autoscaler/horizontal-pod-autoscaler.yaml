@@ -1,0 +1,18 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: test-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: test-configuration
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:                       # Vi kan numera skala på en lista av mätvärden!
+  - type: Resource               # Här är en "resource" för containers i en Pod
+    resource:                    #
+      name: cpu                  # Resursen i fråga är CPU-
+      target:                    #
+        type: Utilization        # -nyttjande, där vi vill skala så att
+        averageUtilization: 67   # genomsnittet hamnar på 67%

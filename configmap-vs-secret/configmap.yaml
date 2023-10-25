@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configuration-values
+data:
+  database-hostname: postgresql
+  threads: "4"
