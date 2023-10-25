@@ -54,9 +54,9 @@ docker push harbor.$DOMAIN/nginx-unprivileged/nginx-unprivileged:mainline-perl
 
 Verifiera gärna i din Harbor att din image har kommit dit.
 
-### Dags att börja!
+# Dags att börja!
 
-Med dessa förberedelser klara är du redo att gå in i den katalog som intresserar dig mest och prova exemplen.
+Med förberedelserna klara är du redo att gå in i den katalog som intresserar dig mest och prova exemplen.
 Välj själv:
 
 - [configmap-vs-secret](configmap-vs-secret)
