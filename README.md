@@ -1,7 +1,7 @@
 # kubernetes-principles-webinar-series
 
 Detta repo har kod som komplement till webbinarieserien skapad av Elastisys och Safespring gällande "Design och driftsättning av skalbara applikationer på Kubernetes". 
-Se hela webbinarieserien på följande adress:
+Se hela webbinarieserien på följande adress: [https://www.safespring.com/webinar/kubernetes-15-principles/](https://www.safespring.com/webinar/kubernetes-15-principles/?mtm_campaign=webcast-kubernetes&mtm_source=github&mtm_medium=readme)
 
 Vi förutsätter att dessa instruktioner följs på Compliant Kubernetes, men det går att hänga med även med andra Kubernetes-distributioner.
 
